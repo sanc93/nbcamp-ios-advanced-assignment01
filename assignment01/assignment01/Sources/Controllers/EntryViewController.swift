@@ -9,11 +9,18 @@ import UIKit
 
 class EntryViewController: UIViewController {
 
+    // MARK: - Properties
+    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        /// View
+        let entryView = EntryView()
     }
 
-
+    // MARK: - Methods & Selectors
+    
+    // MARK: - Actions
 }
 
