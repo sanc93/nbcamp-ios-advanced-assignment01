@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class EntryViewController: UIViewController {
 
@@ -17,10 +18,17 @@ class EntryViewController: UIViewController {
         
         /// View
         let entryView = EntryView()
+        entryView.entryButton.addTarget(self, action: #selector(moveToProfileVC), for: .touchUpInside)
+        view.addSubview(entryView)
+        entryView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 
     // MARK: - Methods & Selectors
+    @objc func moveToProfileVC() {
+ 
+    }
     
-    // MARK: - Actions
 }
 
