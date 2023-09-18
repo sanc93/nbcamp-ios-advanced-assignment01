@@ -11,24 +11,38 @@ import SnapKit
 class EntryViewController: UIViewController {
 
     // MARK: - Properties
+    private let entryView = EntryView()
+    private let profileVC = ProfileViewController()
+    private let profileDesignVC = ProfileDesignViewController()
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /// View
-        let entryView = EntryView()
-        entryView.entryButton.addTarget(self, action: #selector(moveToProfileVC), for: .touchUpInside)
+        
+        /// EntryViewOne
+        entryView.entryBtnOne.addTarget(self, action: #selector(moveToProfileDesignVC), for: .touchUpInside)
         view.addSubview(entryView)
+        
+        
+        /// EntryViewTwo
+        entryView.entryBtnTwo.addTarget(self, action: #selector(moveToProfileVC), for: .touchUpInside)
+        view.addSubview(entryView)
+        
         entryView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
 
     // MARK: - Methods & Selectors
-    @objc func moveToProfileVC() {
- 
+    @objc private func moveToProfileDesignVC() {
+        self.present(profileVC, animated: true, completion: nil)
     }
+    
+    @objc private func moveToProfileVC() {
+        self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
     
 }
 
