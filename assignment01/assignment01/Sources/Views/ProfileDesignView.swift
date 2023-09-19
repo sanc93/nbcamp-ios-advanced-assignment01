@@ -41,7 +41,7 @@ class ProfileDesignView: UIView {
             profileImage.image = imageData
         }
         
-        profileImage.frame = CGRect(x: 0, y: 0, width: 88, height: 88)
+        profileImage.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         profileImage.layer.masksToBounds = true
         profileImage.layer.cornerRadius = profileImage.frame.width / 2
         
@@ -132,7 +132,7 @@ class ProfileDesignView: UIView {
     }()
     private let bioLbl: UILabel = {
         let label = UILabel()
-        label.text = "iOS Developer"
+        label.text = "내배캠 7기 iOS트랙"
         label.font = .systemFont(ofSize: 16)
         return label
     }()
@@ -152,6 +152,38 @@ class ProfileDesignView: UIView {
         return stackView
     }()
     
+    let followBtn: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Follow"), for: .normal)
+        return button
+    }()
+
+    let messageBtn: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Message"), for: .normal)
+        return button
+    }()
+
+    let moreBtn: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "More"), for: .normal)
+        return button
+    }()
+    
+    let divider: UIView = {
+        let divider = UIView()
+        divider.backgroundColor = UIColor(red: 0.86, green: 0.86, blue: 0.86, alpha: 1)
+        return divider
+    }()
+        
+    private lazy var middleBarStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [followBtn, messageBtn, moreBtn])
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        stackView.alignment = .center
+        return stackView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -166,8 +198,8 @@ class ProfileDesignView: UIView {
         profileImage.snp.makeConstraints {
             $0.top.equalTo(navBar.snp.bottom).offset(14)
             $0.leading.equalToSuperview().offset(14)
-            $0.width.equalTo(88)
-            $0.height.equalTo(88)
+            $0.width.equalTo(100)
+            $0.height.equalTo(100)
         }
         addSubview(tabBar)
         tabBar.snp.makeConstraints {
@@ -188,6 +220,23 @@ class ProfileDesignView: UIView {
             $0.top.equalTo(profileImage.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(20)
         }
+        
+        addSubview(middleBarStackView)
+        middleBarStackView.snp.makeConstraints{
+            $0.top.equalTo(bioStackView.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(-20)
+//            $0.width.equalToSuperview()
+            $0.height.equalTo(50)
+        }
+        addSubview(divider)
+        divider.snp.makeConstraints {
+            $0.top.equalTo(middleBarStackView.snp.bottom).offset(10)
+            $0.height.equalTo(1)
+            $0.width.equalToSuperview()
+        }
+        
+        
     }
     
     required init?(coder: NSCoder) {
