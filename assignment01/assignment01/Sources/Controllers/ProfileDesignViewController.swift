@@ -11,15 +11,15 @@ import SnapKit
 class ProfileDesignViewController: UIViewController {
     
     // MARK: - Properties
-    private let profileView = ProfileView()
+    private let profileDesignView = ProfileDesignView()
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        /// ProfileView
-        view.addSubview(profileView)
-        profileView.snp.makeConstraints { make in
+        /// ProfileDesignView
+        view.addSubview(profileDesignView)
+        profileDesignView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
