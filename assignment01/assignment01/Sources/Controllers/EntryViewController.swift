@@ -36,7 +36,8 @@ class EntryViewController: UIViewController {
 
     // MARK: - Methods & Selectors
     @objc private func moveToProfileDesignVC() {
-        self.present(profileVC, animated: true, completion: nil)
+        profileDesignVC.modalPresentationStyle = .fullScreen
+        self.present(profileDesignVC, animated: true, completion: nil)
     }
     
     @objc private func moveToProfileVC() {

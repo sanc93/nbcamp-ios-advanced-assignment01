@@ -22,8 +22,12 @@ class ProfileDesignViewController: UIViewController {
         profileDesignView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
     }
     
     // MARK: - Methods & Selectors
+    @objc func backToMenu() {
+           self.dismiss(animated: true, completion: nil)
+    }
 
 }
