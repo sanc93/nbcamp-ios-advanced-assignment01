@@ -109,7 +109,7 @@ class ProfileDesignView: UIView {
     }()
     
     private lazy var userInfoStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [postStackView, followerStackView,followingStackView])
+        let stackView = UIStackView(arrangedSubviews: [postStackView, followerStackView, followingStackView])
         stackView.axis = .horizontal
         stackView.spacing = 25
         stackView.alignment = .center
@@ -124,8 +124,33 @@ class ProfileDesignView: UIView {
         return tabBar
     }()
     
-
+    private let nameLbl: UILabel = {
+        let label = UILabel()
+        label.text = "김상훈"
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        return label
+    }()
+    private let bioLbl: UILabel = {
+        let label = UILabel()
+        label.text = "iOS Developer"
+        label.font = .systemFont(ofSize: 16)
+        return label
+    }()
+    private let linkLbl: UILabel = {
+        let label = UILabel()
+        label.text = "sanc93.github.io"
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .systemBlue
+        return label
+    }()
     
+    private lazy var bioStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [nameLbl, bioLbl, linkLbl])
+        stackView.axis = .vertical
+        stackView.spacing = 4
+        stackView.alignment = .leading
+        return stackView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -152,10 +177,16 @@ class ProfileDesignView: UIView {
         
         addSubview(userInfoStackView)
         userInfoStackView.snp.makeConstraints {
-            $0.top.equalTo(navBar.snp.bottom).offset(14)
+            $0.top.equalTo(navBar.snp.bottom).offset(20)
             $0.leading.equalTo(profileImage.snp.trailing).offset(28)
             $0.centerY.equalTo(profileImage.snp.centerY)
             $0.trailing.equalToSuperview().offset(-28)
+        }
+        
+        addSubview(bioStackView)
+        bioStackView.snp.makeConstraints{
+            $0.top.equalTo(profileImage.snp.bottom).offset(20)
+            $0.leading.equalToSuperview().offset(20)
         }
     }
     
