@@ -41,7 +41,7 @@ class ProfileDesignView: UIView {
             profileImage.image = imageData
         }
         
-        profileImage.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        profileImage.frame = CGRect(x: 0, y: 0, width: 88, height: 88)
         profileImage.layer.masksToBounds = true
         profileImage.layer.cornerRadius = profileImage.frame.width / 2
         
@@ -184,6 +184,50 @@ class ProfileDesignView: UIView {
         return stackView
     }()
     
+    let navGallery1: UIView = {
+        let navGallery = UIView()
+        
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Grid")
+        imageView.contentMode = .center
+        
+        let underline = UIView()
+        underline.backgroundColor = .black
+        
+        navGallery.addSubview(imageView)
+        imageView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+//            $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 50, bottom: 10, right: 20))
+
+        }
+        navGallery.addSubview(underline)
+        underline.snp.makeConstraints {
+            $0.height.equalTo(1.5)
+            $0.width.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
+        return navGallery
+    }()
+    
+    let navGallery2: UIView = {
+        let navGallery = UIView()
+        return navGallery
+    }()
+    
+    let navGallery3: UIView = {
+        let navGallery = UIView()
+        return navGallery
+    }()
+    
+    private lazy var navGalleryStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [navGallery1, navGallery2, navGallery3])
+        stackView.axis = .horizontal
+        stackView.spacing = 0
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -198,8 +242,8 @@ class ProfileDesignView: UIView {
         profileImage.snp.makeConstraints {
             $0.top.equalTo(navBar.snp.bottom).offset(14)
             $0.leading.equalToSuperview().offset(14)
-            $0.width.equalTo(100)
-            $0.height.equalTo(100)
+            $0.width.equalTo(88)
+            $0.height.equalTo(88)
         }
         addSubview(tabBar)
         tabBar.snp.makeConstraints {
@@ -233,6 +277,13 @@ class ProfileDesignView: UIView {
         divider.snp.makeConstraints {
             $0.top.equalTo(middleBarStackView.snp.bottom).offset(10)
             $0.height.equalTo(1)
+            $0.width.equalToSuperview()
+        }
+        
+        addSubview(navGalleryStackView)
+        navGalleryStackView.snp.makeConstraints{
+            $0.top.equalTo(divider.snp.bottom)
+            $0.height.equalTo(50)
             $0.width.equalToSuperview()
         }
         
