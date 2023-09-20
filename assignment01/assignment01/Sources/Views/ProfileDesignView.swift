@@ -119,7 +119,8 @@ class ProfileDesignView: UIView {
     let tabBar: UITabBar = {
         let tabBar = UITabBar()
         tabBar.barTintColor = .white
-        let tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person.fill"), tag: 0)
+        let tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person.fill")?.withRenderingMode(.alwaysTemplate), tag: 0)
+        tabBar.tintColor = .black
         tabBar.setItems([tabBarItem], animated: false)
         return tabBar
     }()
