@@ -116,7 +116,7 @@ class ProfileDesignView: UIView {
         return stackView
     }()
     
-    private let tabBar: UITabBar = {
+    let tabBar: UITabBar = {
         let tabBar = UITabBar()
         tabBar.barTintColor = .white
         let tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person.fill"), tag: 0)
@@ -152,25 +152,25 @@ class ProfileDesignView: UIView {
         return stackView
     }()
     
-    let followBtn: UIButton = {
+    private let followBtn: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "Follow"), for: .normal)
         return button
     }()
 
-    let messageBtn: UIButton = {
+    private let messageBtn: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "Message"), for: .normal)
         return button
     }()
 
-    let moreBtn: UIButton = {
+    private let moreBtn: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "More"), for: .normal)
         return button
     }()
     
-    let divider: UIView = {
+    private let divider: UIView = {
         let divider = UIView()
         divider.backgroundColor = UIColor(red: 0.86, green: 0.86, blue: 0.86, alpha: 1)
         return divider
@@ -184,7 +184,7 @@ class ProfileDesignView: UIView {
         return stackView
     }()
     
-    let navGallery1: UIView = {
+    private let navGallery1: UIView = {
         let navGallery = UIView()
         
         let imageView = UIImageView()
@@ -209,17 +209,17 @@ class ProfileDesignView: UIView {
         return navGallery
     }()
     
-    let navGallery2: UIView = {
+    private let navGallery2: UIView = {
         let navGallery = UIView()
         return navGallery
     }()
     
-    let navGallery3: UIView = {
+    private let navGallery3: UIView = {
         let navGallery = UIView()
         return navGallery
     }()
     
-    private lazy var navGalleryStackView: UIStackView = {
+    lazy var navGalleryStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [navGallery1, navGallery2, navGallery3])
         stackView.axis = .horizontal
         stackView.spacing = 0
@@ -287,6 +287,7 @@ class ProfileDesignView: UIView {
             $0.width.equalToSuperview()
         }
         
+    
         
     }
     
