@@ -10,14 +10,18 @@ import SnapKit
 
 class ProfileDesignView: UIView {
     
+    // MARK: - Properties
+    
     private let navBar: UINavigationBar = {
         let navBar = UINavigationBar()
         let navBarItems = UINavigationItem(title: "team18_ksh")
         
         navBar.barTintColor = .white
         navBar.shadowImage = UIImage()
+        
         navBarItems.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(ProfileDesignViewController.backToMenu))
         navBarItems.leftBarButtonItem?.tintColor = .systemGray2
+        
         navBarItems.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Menu"), style: .plain, target: ProfileDesignView.self, action: .none)
         navBarItems.rightBarButtonItem?.tintColor = .black
         
@@ -26,7 +30,7 @@ class ProfileDesignView: UIView {
         return navBar
     }()
     
-    let backButton: UIButton = {
+    private let backButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         button.tintColor = .systemGray2
@@ -45,9 +49,7 @@ class ProfileDesignView: UIView {
         profileImage.layer.masksToBounds = true
         profileImage.layer.cornerRadius = profileImage.frame.width / 2
         
-        
         return profileImage
-        
     }()
     
     private let postCountLbl: UILabel = {
@@ -56,28 +58,33 @@ class ProfileDesignView: UIView {
         label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
     }()
+    
     private let followerCountLbl: UILabel = {
         let label = UILabel()
         label.text = "0"
         label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
     }()
+    
     private let followingCountLbl: UILabel = {
         let label = UILabel()
         label.text = "0"
         label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
     }()
+    
     private let postLbl: UILabel = {
         let label = UILabel()
         label.text = "post"
         return label
     }()
+    
     private let followerLbl: UILabel = {
         let label = UILabel()
         label.text = "follower"
         return label
     }()
+    
     private let followingLbl: UILabel = {
         let label = UILabel()
         label.text = "following"
@@ -131,12 +138,14 @@ class ProfileDesignView: UIView {
         label.font = .systemFont(ofSize: 16, weight: .bold)
         return label
     }()
+    
     private let bioLbl: UILabel = {
         let label = UILabel()
         label.text = "내배캠 7기 iOS트랙"
         label.font = .systemFont(ofSize: 16)
         return label
     }()
+    
     private let linkLbl: UILabel = {
         let label = UILabel()
         label.text = "sanc93.github.io"
@@ -194,12 +203,9 @@ class ProfileDesignView: UIView {
         
         let underline = UIView()
         underline.backgroundColor = .black
-        
         navGallery.addSubview(imageView)
         imageView.snp.makeConstraints {
             $0.center.equalToSuperview()
-//            $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 50, bottom: 10, right: 20))
-
         }
         navGallery.addSubview(underline)
         underline.snp.makeConstraints {
@@ -229,30 +235,48 @@ class ProfileDesignView: UIView {
         return stackView
     }()
     
+    // MARK: - Initialization
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configureUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Methods
+    
+    private func configureUI() {
         backgroundColor = .white
         
         addSubview(navBar)
+        addSubview(profileImage)
+        addSubview(tabBar)
+        addSubview(userInfoStackView)
+        addSubview(bioStackView)
+        addSubview(middleBarStackView)
+        addSubview(divider)
+        addSubview(navGalleryStackView)
+        
         navBar.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide.snp.top)
             $0.width.equalToSuperview()
         }
         
-        addSubview(profileImage)
         profileImage.snp.makeConstraints {
             $0.top.equalTo(navBar.snp.bottom).offset(14)
             $0.leading.equalToSuperview().offset(14)
             $0.width.equalTo(88)
             $0.height.equalTo(88)
         }
-        addSubview(tabBar)
+        
         tabBar.snp.makeConstraints {
             $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
             $0.width.equalToSuperview()
         }
         
-        addSubview(userInfoStackView)
         userInfoStackView.snp.makeConstraints {
             $0.top.equalTo(navBar.snp.bottom).offset(20)
             $0.leading.equalTo(profileImage.snp.trailing).offset(28)
@@ -260,40 +284,28 @@ class ProfileDesignView: UIView {
             $0.trailing.equalToSuperview().offset(-28)
         }
         
-        addSubview(bioStackView)
         bioStackView.snp.makeConstraints{
             $0.top.equalTo(profileImage.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(20)
         }
         
-        addSubview(middleBarStackView)
         middleBarStackView.snp.makeConstraints{
             $0.top.equalTo(bioStackView.snp.bottom).offset(10)
             $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview().offset(-20)
-//            $0.width.equalToSuperview()
             $0.height.equalTo(50)
         }
-        addSubview(divider)
+        
         divider.snp.makeConstraints {
             $0.top.equalTo(middleBarStackView.snp.bottom).offset(10)
             $0.height.equalTo(1)
             $0.width.equalToSuperview()
         }
         
-        addSubview(navGalleryStackView)
         navGalleryStackView.snp.makeConstraints{
             $0.top.equalTo(divider.snp.bottom)
             $0.height.equalTo(50)
             $0.width.equalToSuperview()
         }
-        
-    
-        
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
 }
