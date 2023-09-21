@@ -16,7 +16,7 @@ class ProfileDesignView: UIView {
         
         navBar.barTintColor = .white
         navBar.shadowImage = UIImage()
-        navBarItems.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: ProfileDesignView.self, action: .none)
+        navBarItems.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(ProfileDesignViewController.backToMenu))
         navBarItems.leftBarButtonItem?.tintColor = .systemGray2
         navBarItems.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Menu"), style: .plain, target: ProfileDesignView.self, action: .none)
         navBarItems.rightBarButtonItem?.tintColor = .black

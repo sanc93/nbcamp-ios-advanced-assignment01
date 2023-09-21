@@ -14,6 +14,7 @@ class EntryViewController: UIViewController {
     private let entryView = EntryView()
     private let profileVC = ProfileViewController()
     private let profileDesignVC = ProfileDesignViewController()
+    private let todoListVC = TodoListViewController()
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -29,6 +30,10 @@ class EntryViewController: UIViewController {
         entryView.entryBtnTwo.addTarget(self, action: #selector(moveToProfileVC), for: .touchUpInside)
         view.addSubview(entryView)
         
+        /// EntryViewThree
+        entryView.entryBtnThree.addTarget(self, action: #selector(moveToTodoListVC), for: .touchUpInside)
+        view.addSubview(entryView)
+        
         entryView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -42,6 +47,10 @@ class EntryViewController: UIViewController {
     
     @objc private func moveToProfileVC() {
         self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
+    @objc private func moveToTodoListVC() {
+        self.navigationController?.pushViewController(todoListVC, animated: true)
     }
     
     

@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		9357E967DE50132D2DB05EFB /* Pods_assignment01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02AC7B7D414953DEE49D740D /* Pods_assignment01.framework */; };
+		E73322A62ABC0CCD0013CF66 /* TodoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322A52ABC0CCD0013CF66 /* TodoListCell.swift */; };
+		E73322A82ABC0CD90013CF66 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322A72ABC0CD90013CF66 /* Task.swift */; };
+		E73322AC2ABC0D000013CF66 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322A92ABC0D000013CF66 /* TodoListViewController.swift */; };
+		E73322AD2ABC0D000013CF66 /* CompletedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322AA2ABC0D000013CF66 /* CompletedListViewController.swift */; };
+		E73322AE2ABC0D000013CF66 /* AddTaskModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322AB2ABC0D000013CF66 /* AddTaskModalViewController.swift */; };
+		E73322BB2ABC0EAF0013CF66 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322B82ABC0EAF0013CF66 /* UITextFieldExtension.swift */; };
+		E73322BC2ABC0EAF0013CF66 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322B92ABC0EAF0013CF66 /* StringExtension.swift */; };
+		E73322BD2ABC0EAF0013CF66 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322BA2ABC0EAF0013CF66 /* UIImageViewExtension.swift */; };
+		E73322BF2ABC0F4A0013CF66 /* EditTaskModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322BE2ABC0F490013CF66 /* EditTaskModalViewController.swift */; };
 		E7A6260F2AB2E27A00BDAC15 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A6260E2AB2E27A00BDAC15 /* EntryView.swift */; };
 		E7AC9E302AB83C2B00A166DA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC9E2F2AB83C2B00A166DA /* ProfileViewController.swift */; };
 		E7AC9E342AB83D6E00A166DA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC9E332AB83D6E00A166DA /* ProfileView.swift */; };
@@ -25,6 +34,15 @@
 		0264837BD40DACBDC7632A76 /* Pods-assignment01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-assignment01.release.xcconfig"; path = "Target Support Files/Pods-assignment01/Pods-assignment01.release.xcconfig"; sourceTree = "<group>"; };
 		02AC7B7D414953DEE49D740D /* Pods_assignment01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_assignment01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CBFF4741C1E74936DED0FBC /* Pods-assignment01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-assignment01.debug.xcconfig"; path = "Target Support Files/Pods-assignment01/Pods-assignment01.debug.xcconfig"; sourceTree = "<group>"; };
+		E73322A52ABC0CCD0013CF66 /* TodoListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListCell.swift; sourceTree = "<group>"; };
+		E73322A72ABC0CD90013CF66 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		E73322A92ABC0D000013CF66 /* TodoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
+		E73322AA2ABC0D000013CF66 /* CompletedListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedListViewController.swift; sourceTree = "<group>"; };
+		E73322AB2ABC0D000013CF66 /* AddTaskModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskModalViewController.swift; sourceTree = "<group>"; };
+		E73322B82ABC0EAF0013CF66 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		E73322B92ABC0EAF0013CF66 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		E73322BA2ABC0EAF0013CF66 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		E73322BE2ABC0F490013CF66 /* EditTaskModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTaskModalViewController.swift; sourceTree = "<group>"; };
 		E7A6260E2AB2E27A00BDAC15 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		E7AC9E2F2AB83C2B00A166DA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E7AC9E332AB83D6E00A166DA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -69,9 +87,20 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E73322B12ABC0E290013CF66 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E73322B92ABC0EAF0013CF66 /* StringExtension.swift */,
+				E73322BA2ABC0EAF0013CF66 /* UIImageViewExtension.swift */,
+				E73322B82ABC0EAF0013CF66 /* UITextFieldExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E7A626062AB2D5C300BDAC15 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E73322B12ABC0E290013CF66 /* Extensions */,
 				E7F21D942AB17FBA0095FDEE /* SceneDelegate.swift */,
 				E7F21D922AB17FBA0095FDEE /* AppDelegate.swift */,
 				E7F21DA02AB17FBC0095FDEE /* LaunchScreen.storyboard */,
@@ -94,6 +123,7 @@
 		E7A626082AB2D5F600BDAC15 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E73322A72ABC0CD90013CF66 /* Task.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -104,6 +134,7 @@
 				E7A6260E2AB2E27A00BDAC15 /* EntryView.swift */,
 				E7AC9E372AB843B000A166DA /* ProfileDesignView.swift */,
 				E7AC9E332AB83D6E00A166DA /* ProfileView.swift */,
+				E73322A52ABC0CCD0013CF66 /* TodoListCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -121,6 +152,10 @@
 				E7F21D962AB17FBA0095FDEE /* EntryViewController.swift */,
 				E7AC9E352AB842C300A166DA /* ProfileDesignViewController.swift */,
 				E7AC9E2F2AB83C2B00A166DA /* ProfileViewController.swift */,
+				E73322A92ABC0D000013CF66 /* TodoListViewController.swift */,
+				E73322AA2ABC0D000013CF66 /* CompletedListViewController.swift */,
+				E73322AB2ABC0D000013CF66 /* AddTaskModalViewController.swift */,
+				E73322BE2ABC0F490013CF66 /* EditTaskModalViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -268,12 +303,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E73322AE2ABC0D000013CF66 /* AddTaskModalViewController.swift in Sources */,
+				E73322BF2ABC0F4A0013CF66 /* EditTaskModalViewController.swift in Sources */,
+				E73322AC2ABC0D000013CF66 /* TodoListViewController.swift in Sources */,
 				E7AC9E342AB83D6E00A166DA /* ProfileView.swift in Sources */,
+				E73322A62ABC0CCD0013CF66 /* TodoListCell.swift in Sources */,
+				E73322BC2ABC0EAF0013CF66 /* StringExtension.swift in Sources */,
 				E7AC9E302AB83C2B00A166DA /* ProfileViewController.swift in Sources */,
 				E7AC9E362AB842C300A166DA /* ProfileDesignViewController.swift in Sources */,
+				E73322A82ABC0CD90013CF66 /* Task.swift in Sources */,
 				E7F21D972AB17FBA0095FDEE /* EntryViewController.swift in Sources */,
 				E7F21D932AB17FBA0095FDEE /* AppDelegate.swift in Sources */,
+				E73322AD2ABC0D000013CF66 /* CompletedListViewController.swift in Sources */,
+				E73322BB2ABC0EAF0013CF66 /* UITextFieldExtension.swift in Sources */,
 				E7A6260F2AB2E27A00BDAC15 /* EntryView.swift in Sources */,
+				E73322BD2ABC0EAF0013CF66 /* UIImageViewExtension.swift in Sources */,
 				E7F21D952AB17FBA0095FDEE /* SceneDelegate.swift in Sources */,
 				E7F21D9D2AB17FBA0095FDEE /* assignment01.xcdatamodeld in Sources */,
 				E7AC9E382AB843B000A166DA /* ProfileDesignView.swift in Sources */,

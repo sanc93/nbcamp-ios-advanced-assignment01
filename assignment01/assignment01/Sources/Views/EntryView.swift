@@ -25,7 +25,7 @@ class EntryView: UIView {
         entryBtnOne.titleLabel?.textAlignment = .center
         entryBtnOne.setTitleColor(.lightGray, for: .normal)
         entryBtnOne.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        entryBtnOne.backgroundColor = UIColor.white.withAlphaComponent(0.2)
+        entryBtnOne.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         entryBtnOne.layer.cornerRadius = 2
         return entryBtnOne
     }()
@@ -37,9 +37,21 @@ class EntryView: UIView {
         entryBtnTwo.titleLabel?.textAlignment = .center
         entryBtnTwo.setTitleColor(.lightGray, for: .normal)
         entryBtnTwo.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        entryBtnTwo.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        entryBtnTwo.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         entryBtnTwo.layer.cornerRadius = 2
         return entryBtnTwo
+    }()
+    
+    let entryBtnThree: UIButton = {
+        let entryBtnThree = UIButton()
+        entryBtnThree.titleLabel?.numberOfLines = 0
+        entryBtnThree.setTitle("과제3\n(CoreData)", for: .normal)
+        entryBtnThree.titleLabel?.textAlignment = .center
+        entryBtnThree.setTitleColor(.lightGray, for: .normal)
+        entryBtnThree.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        entryBtnThree.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        entryBtnThree.layer.cornerRadius = 2
+        return entryBtnThree
     }()
     
     override init(frame: CGRect) {
@@ -47,26 +59,34 @@ class EntryView: UIView {
         backgroundColor = .black
         
         addSubview(entryBtnOne)
-        entryBtnOne.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-//            make.top.equalTo(titleLabel.snp.bottom).offset(35)
-            make.width.equalTo(200)
-            make.height.equalTo(90)
+        entryBtnOne.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+//            $0.top.equalTo(titleLabel.snp.bottom).offset(35)
+            $0.width.equalTo(200)
+            $0.height.equalTo(90)
         }
         
         addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(entryBtnOne.snp.top).offset(-45)
+        titleLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(entryBtnOne.snp.top).offset(-45)
         }
         
         addSubview(entryBtnTwo)
-        entryBtnTwo.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(entryBtnOne.snp.bottom).offset(15)
-            make.width.equalTo(200)
-            make.height.equalTo(90)
+        entryBtnTwo.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(entryBtnOne.snp.bottom).offset(15)
+            $0.width.equalTo(200)
+            $0.height.equalTo(90)
+        }
+        
+        addSubview(entryBtnThree)
+        entryBtnThree.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(entryBtnTwo.snp.bottom).offset(15)
+            $0.width.equalTo(200)
+            $0.height.equalTo(90)
         }
         
        
