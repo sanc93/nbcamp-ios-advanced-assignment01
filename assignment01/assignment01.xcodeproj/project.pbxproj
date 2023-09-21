@@ -27,7 +27,7 @@
 		E7F21D932AB17FBA0095FDEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F21D922AB17FBA0095FDEE /* AppDelegate.swift */; };
 		E7F21D952AB17FBA0095FDEE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F21D942AB17FBA0095FDEE /* SceneDelegate.swift */; };
 		E7F21D972AB17FBA0095FDEE /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F21D962AB17FBA0095FDEE /* EntryViewController.swift */; };
-		E7F21D9D2AB17FBA0095FDEE /* assignment01.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7F21D9B2AB17FBA0095FDEE /* assignment01.xcdatamodeld */; };
+		E7F21D9D2AB17FBA0095FDEE /* TaskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7F21D9B2AB17FBA0095FDEE /* TaskModel.xcdatamodeld */; };
 		E7F21D9F2AB17FBC0095FDEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7F21D9E2AB17FBC0095FDEE /* Assets.xcassets */; };
 		E7F21DA22AB17FBC0095FDEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F21DA02AB17FBC0095FDEE /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -175,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				E73322A72ABC0CD90013CF66 /* Task.swift */,
+				E7F21D9B2AB17FBA0095FDEE /* TaskModel.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -253,7 +254,6 @@
 			children = (
 				E7A626062AB2D5C300BDAC15 /* Resources */,
 				E7A626072AB2D5CB00BDAC15 /* Sources */,
-				E7F21D9B2AB17FBA0095FDEE /* assignment01.xcdatamodeld */,
 				E7F21DA32AB17FBC0095FDEE /* Info.plist */,
 			);
 			path = assignment01;
@@ -390,7 +390,7 @@
 				E73322CF2ABC17160013CF66 /* ProfileViewModel.swift in Sources */,
 				E73322BD2ABC0EAF0013CF66 /* UIImageViewExtension.swift in Sources */,
 				E7F21D952AB17FBA0095FDEE /* SceneDelegate.swift in Sources */,
-				E7F21D9D2AB17FBA0095FDEE /* assignment01.xcdatamodeld in Sources */,
+				E7F21D9D2AB17FBA0095FDEE /* TaskModel.xcdatamodeld in Sources */,
 				E7AC9E382AB843B000A166DA /* ProfileDesignView.swift in Sources */,
 				E73322C12ABC144B0013CF66 /* User.swift in Sources */,
 			);
@@ -611,13 +611,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E7F21D9B2AB17FBA0095FDEE /* assignment01.xcdatamodeld */ = {
+		E7F21D9B2AB17FBA0095FDEE /* TaskModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				E7F21D9C2AB17FBA0095FDEE /* assignment01.xcdatamodel */,
 			);
 			currentVersion = E7F21D9C2AB17FBA0095FDEE /* assignment01.xcdatamodel */;
-			path = assignment01.xcdatamodeld;
+			path = TaskModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
