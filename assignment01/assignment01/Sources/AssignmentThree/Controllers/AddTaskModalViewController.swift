@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddTaskModalViewController: UIViewController {
 
@@ -25,13 +26,14 @@ class AddTaskModalViewController: UIViewController {
 
     private var selectedDate: Date = Date()
 
-    var todoList: [Task] = []
-
+//    var todoList: [Task] = []
+    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDataFromUserDefaults()
-        configureUI()
+//        loadDataFromUserDefaults()
+        configureUI()       
+        
     }
 
     // MARK: - UI
@@ -168,14 +170,14 @@ class AddTaskModalViewController: UIViewController {
 
     // MARK: - Methods & Selectors
 
-    private func loadDataFromUserDefaults () {
-        if let savedData = UserDefaults.standard.object(forKey: "toDoListKey") as? Data {
-            let decoder = JSONDecoder()
-            if let savedObject = try? decoder.decode([Task].self, from: savedData) {
-                todoList = savedObject
-            }
-        }
-    }
+//    private func loadDataFromUserDefaults () {
+//        if let savedData = UserDefaults.standard.object(forKey: "toDoListKey") as? Data {
+//            let decoder = JSONDecoder()
+//            if let savedObject = try? decoder.decode([Task].self, from: savedData) {
+//                todoList = savedObject
+//            }
+//        }
+//    }
 
     private func dateFormat(date: Date) -> String {
         let formatter = DateFormatter()
@@ -256,12 +258,38 @@ class AddTaskModalViewController: UIViewController {
         )
 
         if !(descriptionTxtfl.text == "") {
-            todoList.append(newTask)
+//            todoList.append(newTask)
 
-            let encoder = JSONEncoder()
-            if let encodedToDoTasks = try? encoder.encode(todoList) {
-                UserDefaults.standard.setValue(encodedToDoTasks, forKey: "toDoListKey")
+//            let encoder = JSONEncoder()
+//            if let encodedToDoTasks = try? encoder.encode(todoList) {
+//                UserDefaults.standard.setValue(encodedToDoTasks, forKey: "toDoListKey")
+//            }
+
+            
+            // 코어데이터에 저장
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let persistentContainer = appDelegate.persistentContainer.viewContext
+            
+            let entity = NSEntityDescription.entity(forEntityName: "TaskModel", in: persistentContainer)
+            
+            if let entity = entity {
+                let taskModel = NSManagedObject(entity: entity, insertInto: persistentContainer)
+                taskModel.setValue(newTask.taskId, forKey: "taskId")
+                taskModel.setValue(newTask.description, forKey: "desc")
+                taskModel.setValue(newTask.createdDate, forKey: "createdDate")
+                taskModel.setValue(newTask.completedDate, forKey: "completedDate")
+                taskModel.setValue(newTask.deadlineDate, forKey: "deadlineDate")
+                taskModel.setValue(newTask.isCompleted, forKey: "isCompleted")
+                taskModel.setValue(newTask.priority, forKey: "priority")
             }
+            
+            do {
+              try persistentContainer.save()
+            } catch {
+              print(error.localizedDescription)
+            }
+            
+            
 
             self.dismiss(animated: true) {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
@@ -270,4 +298,6 @@ class AddTaskModalViewController: UIViewController {
         descriptionTxtfl.backgroundColor = UIColor(red: 1.00, green: 0.90, blue: 0.90, alpha: 1.00)
         descriptionTxtfl.placeholder = "필수 입력 사항입니다."
     }
+    
+    
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoListViewController: UIViewController {
 
@@ -21,7 +22,8 @@ class TodoListViewController: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDataFromUserDefaults()
+//        loadDataFromUserDefaults()
+        loadDataFromCoreData()
         configureUI()
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
 
@@ -108,20 +110,80 @@ class TodoListViewController: UIViewController {
     }
 
     // MARK: - Methods & Selectors
-    private func loadDataFromUserDefaults () {
-        if let savedData = UserDefaults.standard.object(forKey: "toDoListKey") as? Data {
-            let decoder = JSONDecoder()
-            if let savedObject = try? decoder.decode([Task].self, from: savedData) {
-                todoList = savedObject
+    
+//    private func loadDataFromUserDefaults () {
+//        if let savedData = UserDefaults.standard.object(forKey: "toDoListKey") as? Data {
+//            let decoder = JSONDecoder()
+//            if let savedObject = try? decoder.decode([Task].self, from: savedData) {
+//                todoList = savedObject
+//            }
+//        }
+//    }
+    
+    private func loadDataFromCoreData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let persistentContainer = appDelegate.persistentContainer.viewContext
+
+        do {
+            let tasksFromCoreData = try persistentContainer.fetch(TaskModel.fetchRequest()) as! [TaskModel]
+            todoList.removeAll()
+            tasksFromCoreData.forEach { coreData in
+                if let taskId = coreData.taskId,
+                   let desc = coreData.desc,
+                   let createdDate = coreData.createdDate,
+                   let completedDate = coreData.completedDate,
+                   let deadlineDate = coreData.deadlineDate,
+                   let priority = coreData.priority {
+                    
+                    let task = Task(
+                        taskId: taskId,
+                        description: desc,
+                        createdDate: createdDate,
+                        completedDate: completedDate,
+                        deadlineDate: deadlineDate,
+                        isCompleted: coreData.isCompleted,
+                        priority: priority
+                    )
+                    todoList.append(task)
+                }
             }
+        } catch {
+            print(error.localizedDescription)
         }
     }
+    
     private func saveDataToUserDefaults() {
         let encoder = JSONEncoder()
         if let encodedToDoTasks = try? encoder.encode(self.todoList) {
             UserDefaults.standard.set(encodedToDoTasks, forKey: "toDoListKey")
         }
     }
+    
+    // TODO: - Core Data에 부분 저장(수정) 가능하도록
+    private func saveDataToCoreData() {
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let persistentContainer = appDelegate.persistentContainer.viewContext
+//        
+//        let entity = NSEntityDescription.entity(forEntityName: "TaskModel", in: persistentContainer)
+//        
+//        if let entity = entity {
+//            let taskModel = NSManagedObject(entity: entity, insertInto: persistentContainer)
+//            taskModel.setValue(newTask.taskId, forKey: "taskId")
+//            taskModel.setValue(newTask.description, forKey: "desc")
+//            taskModel.setValue(newTask.createdDate, forKey: "createdDate")
+//            taskModel.setValue(newTask.completedDate, forKey: "completedDate")
+//            taskModel.setValue(newTask.deadlineDate, forKey: "deadlineDate")
+//            taskModel.setValue(newTask.isCompleted, forKey: "isCompleted")
+//            taskModel.setValue(newTask.priority, forKey: "priority")
+//        }
+//        
+//        do {
+//          try persistentContainer.save()
+//        } catch {
+//          print(error.localizedDescription)
+//        }
+    }
+
 
     private func showComplimentMeme() {
         let complimentMeme = UIImageView()
@@ -173,7 +235,8 @@ class TodoListViewController: UIViewController {
     }
 
     @objc private func loadList(notification: NSNotification){
-        loadDataFromUserDefaults()
+//        loadDataFromUserDefaults()
+        loadDataFromCoreData()
         todoListTable.reloadData()
     }
 
