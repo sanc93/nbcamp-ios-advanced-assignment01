@@ -18,6 +18,7 @@
 		E73322BD2ABC0EAF0013CF66 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322BA2ABC0EAF0013CF66 /* UIImageViewExtension.swift */; };
 		E73322BF2ABC0F4A0013CF66 /* EditTaskModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322BE2ABC0F490013CF66 /* EditTaskModalViewController.swift */; };
 		E73322C12ABC144B0013CF66 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322C02ABC144B0013CF66 /* User.swift */; };
+		E73322CF2ABC17160013CF66 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322CE2ABC17160013CF66 /* ProfileViewModel.swift */; };
 		E7A6260F2AB2E27A00BDAC15 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A6260E2AB2E27A00BDAC15 /* EntryView.swift */; };
 		E7AC9E302AB83C2B00A166DA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC9E2F2AB83C2B00A166DA /* ProfileViewController.swift */; };
 		E7AC9E342AB83D6E00A166DA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC9E332AB83D6E00A166DA /* ProfileView.swift */; };
@@ -45,6 +46,7 @@
 		E73322BA2ABC0EAF0013CF66 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		E73322BE2ABC0F490013CF66 /* EditTaskModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTaskModalViewController.swift; sourceTree = "<group>"; };
 		E73322C02ABC144B0013CF66 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E73322CE2ABC17160013CF66 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E7A6260E2AB2E27A00BDAC15 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		E7AC9E2F2AB83C2B00A166DA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E7AC9E332AB83D6E00A166DA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		E7A6260A2AB2D60800BDAC15 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E73322CE2ABC17160013CF66 /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -250,8 +253,8 @@
 			children = (
 				E7A626062AB2D5C300BDAC15 /* Resources */,
 				E7A626072AB2D5CB00BDAC15 /* Sources */,
-				E7F21DA32AB17FBC0095FDEE /* Info.plist */,
 				E7F21D9B2AB17FBA0095FDEE /* assignment01.xcdatamodeld */,
+				E7F21DA32AB17FBC0095FDEE /* Info.plist */,
 			);
 			path = assignment01;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				E73322AD2ABC0D000013CF66 /* CompletedListViewController.swift in Sources */,
 				E73322BB2ABC0EAF0013CF66 /* UITextFieldExtension.swift in Sources */,
 				E7A6260F2AB2E27A00BDAC15 /* EntryView.swift in Sources */,
+				E73322CF2ABC17160013CF66 /* ProfileViewModel.swift in Sources */,
 				E73322BD2ABC0EAF0013CF66 /* UIImageViewExtension.swift in Sources */,
 				E7F21D952AB17FBA0095FDEE /* SceneDelegate.swift in Sources */,
 				E7F21D9D2AB17FBA0095FDEE /* assignment01.xcdatamodeld in Sources */,

@@ -11,8 +11,9 @@ import SnapKit
 class EntryViewController: UIViewController {
 
     // MARK: - Properties
+    
     private let entryView = EntryView()
-    private let profileVC = ProfileViewController()
+    private let profileVC = ProfileViewController(user: User.dummyData)
     private let profileDesignVC = ProfileDesignViewController()
     private let todoListVC = TodoListViewController()
     
