@@ -11,7 +11,6 @@
 		E73322A62ABC0CCD0013CF66 /* TodoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322A52ABC0CCD0013CF66 /* TodoListCell.swift */; };
 		E73322A82ABC0CD90013CF66 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322A72ABC0CD90013CF66 /* Task.swift */; };
 		E73322AC2ABC0D000013CF66 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322A92ABC0D000013CF66 /* TodoListViewController.swift */; };
-		E73322AD2ABC0D000013CF66 /* CompletedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322AA2ABC0D000013CF66 /* CompletedListViewController.swift */; };
 		E73322AE2ABC0D000013CF66 /* AddTaskModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322AB2ABC0D000013CF66 /* AddTaskModalViewController.swift */; };
 		E73322BB2ABC0EAF0013CF66 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322B82ABC0EAF0013CF66 /* UITextFieldExtension.swift */; };
 		E73322BC2ABC0EAF0013CF66 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322B92ABC0EAF0013CF66 /* StringExtension.swift */; };
@@ -39,7 +38,6 @@
 		E73322A52ABC0CCD0013CF66 /* TodoListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListCell.swift; sourceTree = "<group>"; };
 		E73322A72ABC0CD90013CF66 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		E73322A92ABC0D000013CF66 /* TodoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
-		E73322AA2ABC0D000013CF66 /* CompletedListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedListViewController.swift; sourceTree = "<group>"; };
 		E73322AB2ABC0D000013CF66 /* AddTaskModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskModalViewController.swift; sourceTree = "<group>"; };
 		E73322B82ABC0EAF0013CF66 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		E73322B92ABC0EAF0013CF66 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				E73322A92ABC0D000013CF66 /* TodoListViewController.swift */,
-				E73322AA2ABC0D000013CF66 /* CompletedListViewController.swift */,
 				E73322AB2ABC0D000013CF66 /* AddTaskModalViewController.swift */,
 				E73322BE2ABC0F490013CF66 /* EditTaskModalViewController.swift */,
 			);
@@ -384,7 +381,6 @@
 				E73322A82ABC0CD90013CF66 /* Task.swift in Sources */,
 				E7F21D972AB17FBA0095FDEE /* EntryViewController.swift in Sources */,
 				E7F21D932AB17FBA0095FDEE /* AppDelegate.swift in Sources */,
-				E73322AD2ABC0D000013CF66 /* CompletedListViewController.swift in Sources */,
 				E73322BB2ABC0EAF0013CF66 /* UITextFieldExtension.swift in Sources */,
 				E7A6260F2AB2E27A00BDAC15 /* EntryView.swift in Sources */,
 				E73322CF2ABC17160013CF66 /* ProfileViewModel.swift in Sources */,
