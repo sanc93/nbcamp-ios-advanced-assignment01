@@ -17,6 +17,7 @@
 		E73322BC2ABC0EAF0013CF66 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322B92ABC0EAF0013CF66 /* StringExtension.swift */; };
 		E73322BD2ABC0EAF0013CF66 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322BA2ABC0EAF0013CF66 /* UIImageViewExtension.swift */; };
 		E73322BF2ABC0F4A0013CF66 /* EditTaskModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322BE2ABC0F490013CF66 /* EditTaskModalViewController.swift */; };
+		E73322C12ABC144B0013CF66 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73322C02ABC144B0013CF66 /* User.swift */; };
 		E7A6260F2AB2E27A00BDAC15 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A6260E2AB2E27A00BDAC15 /* EntryView.swift */; };
 		E7AC9E302AB83C2B00A166DA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC9E2F2AB83C2B00A166DA /* ProfileViewController.swift */; };
 		E7AC9E342AB83D6E00A166DA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC9E332AB83D6E00A166DA /* ProfileView.swift */; };
@@ -43,6 +44,7 @@
 		E73322B92ABC0EAF0013CF66 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E73322BA2ABC0EAF0013CF66 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		E73322BE2ABC0F490013CF66 /* EditTaskModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTaskModalViewController.swift; sourceTree = "<group>"; };
+		E73322C02ABC144B0013CF66 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E7A6260E2AB2E27A00BDAC15 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		E7AC9E2F2AB83C2B00A166DA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E7AC9E332AB83D6E00A166DA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,103 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E73322C22ABC14740013CF66 /* AssignmentOne */ = {
+			isa = PBXGroup;
+			children = (
+				E73322C62ABC14BF0013CF66 /* Views */,
+				E73322C72ABC14CB0013CF66 /* Controllers */,
+			);
+			path = AssignmentOne;
+			sourceTree = "<group>";
+		};
+		E73322C32ABC14950013CF66 /* AssignmentTwo */ = {
+			isa = PBXGroup;
+			children = (
+				E73322C82ABC14F30013CF66 /* Models */,
+				E73322C92ABC14FA0013CF66 /* Views */,
+				E7A6260A2AB2D60800BDAC15 /* ViewModels */,
+				E73322CA2ABC15030013CF66 /* Controllers */,
+			);
+			path = AssignmentTwo;
+			sourceTree = "<group>";
+		};
+		E73322C42ABC14A60013CF66 /* AssignmentThree */ = {
+			isa = PBXGroup;
+			children = (
+				E73322CB2ABC15180013CF66 /* Models */,
+				E73322CC2ABC152A0013CF66 /* Views */,
+				E73322CD2ABC15460013CF66 /* Controllers */,
+			);
+			path = AssignmentThree;
+			sourceTree = "<group>";
+		};
+		E73322C62ABC14BF0013CF66 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E7AC9E372AB843B000A166DA /* ProfileDesignView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E73322C72ABC14CB0013CF66 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E7AC9E352AB842C300A166DA /* ProfileDesignViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E73322C82ABC14F30013CF66 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E73322C02ABC144B0013CF66 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E73322C92ABC14FA0013CF66 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E7AC9E332AB83D6E00A166DA /* ProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E73322CA2ABC15030013CF66 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E7AC9E2F2AB83C2B00A166DA /* ProfileViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E73322CB2ABC15180013CF66 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E73322A72ABC0CD90013CF66 /* Task.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E73322CC2ABC152A0013CF66 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E73322A52ABC0CCD0013CF66 /* TodoListCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E73322CD2ABC15460013CF66 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E73322A92ABC0D000013CF66 /* TodoListViewController.swift */,
+				E73322AA2ABC0D000013CF66 /* CompletedListViewController.swift */,
+				E73322AB2ABC0D000013CF66 /* AddTaskModalViewController.swift */,
+				E73322BE2ABC0F490013CF66 /* EditTaskModalViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		E7A626062AB2D5C300BDAC15 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,31 +211,13 @@
 		E7A626072AB2D5CB00BDAC15 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E7A626082AB2D5F600BDAC15 /* Models */,
-				E7A626092AB2D5FB00BDAC15 /* Views */,
-				E7A6260A2AB2D60800BDAC15 /* ViewModels */,
-				E7A6260B2AB2D61800BDAC15 /* Controllers */,
+				E7A6260E2AB2E27A00BDAC15 /* EntryView.swift */,
+				E7F21D962AB17FBA0095FDEE /* EntryViewController.swift */,
+				E73322C22ABC14740013CF66 /* AssignmentOne */,
+				E73322C32ABC14950013CF66 /* AssignmentTwo */,
+				E73322C42ABC14A60013CF66 /* AssignmentThree */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		E7A626082AB2D5F600BDAC15 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				E73322A72ABC0CD90013CF66 /* Task.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		E7A626092AB2D5FB00BDAC15 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				E7A6260E2AB2E27A00BDAC15 /* EntryView.swift */,
-				E7AC9E372AB843B000A166DA /* ProfileDesignView.swift */,
-				E7AC9E332AB83D6E00A166DA /* ProfileView.swift */,
-				E73322A52ABC0CCD0013CF66 /* TodoListCell.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		E7A6260A2AB2D60800BDAC15 /* ViewModels */ = {
@@ -144,20 +225,6 @@
 			children = (
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		E7A6260B2AB2D61800BDAC15 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				E7F21D962AB17FBA0095FDEE /* EntryViewController.swift */,
-				E7AC9E352AB842C300A166DA /* ProfileDesignViewController.swift */,
-				E7AC9E2F2AB83C2B00A166DA /* ProfileViewController.swift */,
-				E73322A92ABC0D000013CF66 /* TodoListViewController.swift */,
-				E73322AA2ABC0D000013CF66 /* CompletedListViewController.swift */,
-				E73322AB2ABC0D000013CF66 /* AddTaskModalViewController.swift */,
-				E73322BE2ABC0F490013CF66 /* EditTaskModalViewController.swift */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		E7F21D862AB17FBA0095FDEE = {
@@ -321,6 +388,7 @@
 				E7F21D952AB17FBA0095FDEE /* SceneDelegate.swift in Sources */,
 				E7F21D9D2AB17FBA0095FDEE /* assignment01.xcdatamodeld in Sources */,
 				E7AC9E382AB843B000A166DA /* ProfileDesignView.swift in Sources */,
+				E73322C12ABC144B0013CF66 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,7 +21,7 @@ class EntryView: UIView {
     let entryBtnOne: UIButton = {
         let entryBtnOne = UIButton()
         entryBtnOne.titleLabel?.numberOfLines = 0
-        entryBtnOne.setTitle("과제1\n(ProfileDesignView)", for: .normal)
+        entryBtnOne.setTitle("과제1\n(UI동일하게 구현하기)", for: .normal)
         entryBtnOne.titleLabel?.textAlignment = .center
         entryBtnOne.setTitleColor(.lightGray, for: .normal)
         entryBtnOne.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
@@ -33,7 +33,7 @@ class EntryView: UIView {
     let entryBtnTwo: UIButton = {
         let entryBtnTwo = UIButton()
         entryBtnTwo.titleLabel?.numberOfLines = 0
-        entryBtnTwo.setTitle("과제2\n(ProfileView)", for: .normal)
+        entryBtnTwo.setTitle("과제2\n(MVVM패턴 사용하기)", for: .normal)
         entryBtnTwo.titleLabel?.textAlignment = .center
         entryBtnTwo.setTitleColor(.lightGray, for: .normal)
         entryBtnTwo.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
@@ -45,7 +45,7 @@ class EntryView: UIView {
     let entryBtnThree: UIButton = {
         let entryBtnThree = UIButton()
         entryBtnThree.titleLabel?.numberOfLines = 0
-        entryBtnThree.setTitle("과제3\n(CoreData)", for: .normal)
+        entryBtnThree.setTitle("과제3\n(CoreData 사용하기)", for: .normal)
         entryBtnThree.titleLabel?.textAlignment = .center
         entryBtnThree.setTitleColor(.lightGray, for: .normal)
         entryBtnThree.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
