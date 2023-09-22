@@ -25,13 +25,10 @@ class AddTaskModalViewController: UIViewController {
     private var lowPriorityBtn: UIButton!
 
     private var selectedDate: Date = Date()
-
-//    var todoList: [Task] = []
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        loadDataFromUserDefaults()
         configureUI()       
         
     }
@@ -170,15 +167,6 @@ class AddTaskModalViewController: UIViewController {
 
     // MARK: - Methods & Selectors
 
-//    private func loadDataFromUserDefaults () {
-//        if let savedData = UserDefaults.standard.object(forKey: "toDoListKey") as? Data {
-//            let decoder = JSONDecoder()
-//            if let savedObject = try? decoder.decode([Task].self, from: savedData) {
-//                todoList = savedObject
-//            }
-//        }
-//    }
-
     private func dateFormat(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy / MM / dd   a h:mm"
@@ -258,15 +246,7 @@ class AddTaskModalViewController: UIViewController {
         )
 
         if !(descriptionTxtfl.text == "") {
-//            todoList.append(newTask)
 
-//            let encoder = JSONEncoder()
-//            if let encodedToDoTasks = try? encoder.encode(todoList) {
-//                UserDefaults.standard.setValue(encodedToDoTasks, forKey: "toDoListKey")
-//            }
-
-            
-            // 코어데이터에 저장
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let persistentContainer = appDelegate.persistentContainer.viewContext
             
@@ -288,8 +268,6 @@ class AddTaskModalViewController: UIViewController {
             } catch {
               print(error.localizedDescription)
             }
-            
-            
 
             self.dismiss(animated: true) {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)

@@ -23,7 +23,6 @@ class TodoListViewController: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        loadDataFromUserDefaults()
         loadDataFromCoreData()
         configureUI()
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
@@ -56,12 +55,12 @@ class TodoListViewController: UIViewController {
             ])
         }
 
-        // todoList가 비어 있는 경우에만 레이블을 표시
+        // TODO: - todoList가 비어 있는 경우에만 레이블을 표시
         if todoList.isEmpty {
-            print("비어있다")
+//            print("비어있다")
             emptyTasksUILabel.isHidden = false
         } else {
-            print("안비어있다")
+//            print("안비어있다")
             emptyTasksUILabel.isHidden = true
         }
     }
@@ -112,15 +111,6 @@ class TodoListViewController: UIViewController {
 
     // MARK: - Methods & Selectors
     
-//    private func loadDataFromUserDefaults () {
-//        if let savedData = UserDefaults.standard.object(forKey: "toDoListKey") as? Data {
-//            let decoder = JSONDecoder()
-//            if let savedObject = try? decoder.decode([Task].self, from: savedData) {
-//                todoList = savedObject
-//            }
-//        }
-//    }
-    
     private func loadDataFromCoreData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let persistentContainer = appDelegate.persistentContainer.viewContext
@@ -159,32 +149,6 @@ class TodoListViewController: UIViewController {
             UserDefaults.standard.set(encodedToDoTasks, forKey: "toDoListKey")
         }
     }
-    
-    // TODO: - Core Data에 부분 저장(수정) 가능하도록
-    private func saveDataToCoreData() {
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let persistentContainer = appDelegate.persistentContainer.viewContext
-//        
-//        let entity = NSEntityDescription.entity(forEntityName: "TaskModel", in: persistentContainer)
-//        
-//        if let entity = entity {
-//            let taskModel = NSManagedObject(entity: entity, insertInto: persistentContainer)
-//            taskModel.setValue(newTask.taskId, forKey: "taskId")
-//            taskModel.setValue(newTask.description, forKey: "desc")
-//            taskModel.setValue(newTask.createdDate, forKey: "createdDate")
-//            taskModel.setValue(newTask.completedDate, forKey: "completedDate")
-//            taskModel.setValue(newTask.deadlineDate, forKey: "deadlineDate")
-//            taskModel.setValue(newTask.isCompleted, forKey: "isCompleted")
-//            taskModel.setValue(newTask.priority, forKey: "priority")
-//        }
-//        
-//        do {
-//          try persistentContainer.save()
-//        } catch {
-//          print(error.localizedDescription)
-//        }
-    }
-
 
     private func showComplimentMeme() {
         let complimentMeme = UIImageView()
@@ -237,7 +201,6 @@ class TodoListViewController: UIViewController {
     }
 
     @objc private func loadList(notification: NSNotification){
-//        loadDataFromUserDefaults()
         loadDataFromCoreData()
         todoListTable.reloadData()
     }
@@ -305,27 +268,14 @@ extension TodoListViewController: UITableViewDelegate {
         
         let selectedTask = tasksInSection[indexPath.row]
         
-//        if let index = todoList.firstIndex(where: { $0.taskId == selectedTask.taskId }) {
-//            todoList[index].isCompleted.toggle()
-//            if todoList[index].isCompleted {
-//                todoList[index].completedDate = Date()
-//                showComplimentMeme()
-//            }
-//            saveDataToUserDefaults()
-//            tableView.reloadData()
-//        }
-        
-        // TODO: - core data에서 taskId를 기준으로 찾아서 completedDate와 isCompleted 변경 해주기
-        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let persistentContainer = appDelegate.persistentContainer.viewContext
-        
-        // NSFetchRequest 생성
+
         let fetchRequest: NSFetchRequest<TaskModel> = TaskModel.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "taskId == %@", selectedTask.taskId.uuidString)
 
         do {
-            // Core Data에서 객체를 가져와서 업데이트
+
             let results = try persistentContainer.fetch(fetchRequest)
             
             if let managedObject = results.first {
@@ -336,7 +286,6 @@ extension TodoListViewController: UITableViewDelegate {
                     showComplimentMeme()
                 }
                 
-                // 변경사항을 저장
                 try persistentContainer.save()
 
                 loadDataFromCoreData()
@@ -383,10 +332,8 @@ extension TodoListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
-        // TODO: - 현재 선택한 할일(row값)을 임시 배열에 저장해서.. EditTaskModalViewController로 던져준다
         let edit = UIContextualAction(style: .destructive, title: nil) { (_, _, success) in
 
-            
             var tasksInSection: [Task]
             if indexPath.section == 0 {
                 tasksInSection = self.todoList.filter { $0.priority == "High" }
@@ -398,7 +345,6 @@ extension TodoListViewController: UITableViewDataSource {
                 tasksInSection = []
             }
 
-//            self.editTask = tasksInSection[indexPath.row]
             self.editTask.removeAll()
             self.editTask.append(tasksInSection[indexPath.row])
             
@@ -426,37 +372,25 @@ extension TodoListViewController: UITableViewDataSource {
             }
 
             let deletedTask = tasksInSection[indexPath.row]
-//            self.todoList.removeAll { $0.taskId == deletedTask.taskId }
 
-            // TODO: - taskId를 기준으로 찾아서 core data에서 삭제
-            
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let persistentContainer = appDelegate.persistentContainer.viewContext
-            
-            // NSFetchRequest 생성
+
             let fetchRequest: NSFetchRequest<TaskModel> = TaskModel.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "taskId == %@", deletedTask.taskId.uuidString)
 
             do {
-                // Core Data에서 객체를 가져와서 업데이트
                 let results = try persistentContainer.fetch(fetchRequest)
-                
                 if let object = results.first {
-                    
-                    // 찾아서 삭제
                     persistentContainer.delete(object)
-                    
-                    // 변경사항을 저장
                     try persistentContainer.save()
                 }
             } catch {
                 print("Core Data fetch error: \(error.localizedDescription)")
             }
-//            self.saveDataToUserDefaults()
             self.loadDataFromCoreData()
             self.todoListTable.reloadData()
             success(true)
-
         }
 
         delete.backgroundColor = UIColor(red: 0.80, green: 0.45, blue: 0.42, alpha: 1.00)

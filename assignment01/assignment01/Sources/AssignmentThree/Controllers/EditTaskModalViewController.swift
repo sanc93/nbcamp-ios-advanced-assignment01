@@ -32,7 +32,6 @@ class EditTaskModalViewController: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        loadDataFromUserDefaults()
         configureUI()
     }
 
@@ -52,7 +51,7 @@ class EditTaskModalViewController: UIViewController {
         navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        let navigationItem = UINavigationItem(title: "할일 수정(아직 구현하지 못했습니다)")
+        let navigationItem = UINavigationItem(title: "할일 수정")
         let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelBtnTapped))
         let addBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(addBtnTapped))
         cancelBtn.tintColor = .lightGray
@@ -194,15 +193,6 @@ class EditTaskModalViewController: UIViewController {
 
     // MARK: - Methods & Selectors
 
-//    private func loadDataFromUserDefaults () {
-//        if let savedData = UserDefaults.standard.object(forKey: "toDoListKey") as? Data {
-//            let decoder = JSONDecoder()
-//            if let savedObject = try? decoder.decode([Task].self, from: savedData) {
-//                todoList = savedObject
-//            }
-//        }
-//    }
-
     private func dateFormat(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy / MM / dd   a h:mm"
@@ -284,18 +274,9 @@ class EditTaskModalViewController: UIViewController {
 
         if !(descriptionTxtfl.text == "") {
 
-//            todoList.append(newTask)
-
-//            let encoder = JSONEncoder()
-//            if let encodedToDoTasks = try? encoder.encode(todoList) {
-//                UserDefaults.standard.setValue(encodedToDoTasks, forKey: "toDoListKey")
-//            }
-           
-        // 코어데이터에 저장
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let persistentContainer = appDelegate.persistentContainer.viewContext
         
-        // NSFetchRequest 생성
         let fetchRequest: NSFetchRequest<TaskModel> = TaskModel.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "taskId == %@", newTask.taskId.uuidString)
         
@@ -303,13 +284,11 @@ class EditTaskModalViewController: UIViewController {
             let object = try persistentContainer.fetch(fetchRequest)
             
             if let managedObject = object.first {
-                // 객체가 존재하면 업데이트
                 managedObject.desc = newTask.description
                 managedObject.deadlineDate = newTask.deadlineDate
                 managedObject.isCompleted = newTask.isCompleted
                 managedObject.priority = newTask.priority
                 
-                // 변경사항을 저장
                 try persistentContainer.save()
             }
                 
@@ -317,8 +296,6 @@ class EditTaskModalViewController: UIViewController {
           print(error.localizedDescription)
         }
         
-            
-
             self.dismiss(animated: true) {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
             }
