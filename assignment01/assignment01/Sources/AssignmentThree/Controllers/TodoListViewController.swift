@@ -441,10 +441,10 @@ extension TodoListViewController: UITableViewDataSource {
                 // Core Data에서 객체를 가져와서 업데이트
                 let results = try persistentContainer.fetch(fetchRequest)
                 
-                if let managedObject = results.first {
+                if let object = results.first {
                     
                     // 찾아서 삭제
-                    persistentContainer.delete(managedObject)
+                    persistentContainer.delete(object)
                     
                     // 변경사항을 저장
                     try persistentContainer.save()

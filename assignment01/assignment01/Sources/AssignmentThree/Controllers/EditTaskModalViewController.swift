@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class EditTaskModalViewController: UIViewController {
 
@@ -31,7 +32,7 @@ class EditTaskModalViewController: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDataFromUserDefaults()
+//        loadDataFromUserDefaults()
         configureUI()
     }
 
@@ -193,14 +194,14 @@ class EditTaskModalViewController: UIViewController {
 
     // MARK: - Methods & Selectors
 
-    private func loadDataFromUserDefaults () {
-        if let savedData = UserDefaults.standard.object(forKey: "toDoListKey") as? Data {
-            let decoder = JSONDecoder()
-            if let savedObject = try? decoder.decode([Task].self, from: savedData) {
-                todoList = savedObject
-            }
-        }
-    }
+//    private func loadDataFromUserDefaults () {
+//        if let savedData = UserDefaults.standard.object(forKey: "toDoListKey") as? Data {
+//            let decoder = JSONDecoder()
+//            if let savedObject = try? decoder.decode([Task].self, from: savedData) {
+//                todoList = savedObject
+//            }
+//        }
+//    }
 
     private func dateFormat(date: Date) -> String {
         let formatter = DateFormatter()
@@ -270,23 +271,53 @@ class EditTaskModalViewController: UIViewController {
     }
 
     @objc private func addBtnTapped() {
+        
         let newTask = Task(
-            taskId: UUID(),
+            taskId: editTask[0].taskId,
             description: descriptionTxtfl.text ?? "",
-            createdDate: Date(),
-            completedDate: Date(),
+            createdDate: editTask[0].createdDate,
+            completedDate: editTask[0].completedDate,
             deadlineDate: selectedDate,
-            isCompleted: false,
+            isCompleted: editTask[0].isCompleted,
             priority: selectedPriority
         )
 
         if !(descriptionTxtfl.text == "") {
-            todoList.append(newTask)
 
-            let encoder = JSONEncoder()
-            if let encodedToDoTasks = try? encoder.encode(todoList) {
-                UserDefaults.standard.setValue(encodedToDoTasks, forKey: "toDoListKey")
+//            todoList.append(newTask)
+
+//            let encoder = JSONEncoder()
+//            if let encodedToDoTasks = try? encoder.encode(todoList) {
+//                UserDefaults.standard.setValue(encodedToDoTasks, forKey: "toDoListKey")
+//            }
+           
+        // 코어데이터에 저장
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let persistentContainer = appDelegate.persistentContainer.viewContext
+        
+        // NSFetchRequest 생성
+        let fetchRequest: NSFetchRequest<TaskModel> = TaskModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "taskId == %@", newTask.taskId.uuidString)
+        
+        do {
+            let object = try persistentContainer.fetch(fetchRequest)
+            
+            if let managedObject = object.first {
+                // 객체가 존재하면 업데이트
+                managedObject.desc = newTask.description
+                managedObject.deadlineDate = newTask.deadlineDate
+                managedObject.isCompleted = newTask.isCompleted
+                managedObject.priority = newTask.priority
+                
+                // 변경사항을 저장
+                try persistentContainer.save()
             }
+                
+        } catch {
+          print(error.localizedDescription)
+        }
+        
+            
 
             self.dismiss(animated: true) {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
