@@ -26,6 +26,7 @@ class EditTaskModalViewController: UIViewController {
     private var selectedDate: Date = Date()
 
     var todoList: [Task] = []
+    var editTask: [Task] = []
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -39,6 +40,7 @@ class EditTaskModalViewController: UIViewController {
         view.backgroundColor = .white
         setNavigationBar()
         setInputForm()
+        setInitialPriority()
     }
 
     private func setNavigationBar() {
@@ -76,7 +78,7 @@ class EditTaskModalViewController: UIViewController {
         descriptionLbl.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         descriptionLbl.textColor = UIColor(red: 0.85, green: 0.67, blue: 0.46, alpha: 1.00)
 
-        descriptionTxtfl.text = "예) 밥 먹기" // 현재 row값 넣기
+        descriptionTxtfl.text = editTask[0].description
         descriptionTxtfl.backgroundColor = UIColor(red: 0.85, green: 0.67, blue: 0.46, alpha: 0.2)
         descriptionTxtfl.borderStyle = .none
         descriptionTxtfl.layer.cornerRadius = 15
@@ -86,7 +88,7 @@ class EditTaskModalViewController: UIViewController {
         deadlineLbl.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         deadlineLbl.textColor = UIColor(red: 0.85, green: 0.67, blue: 0.46, alpha: 0.2)
 
-        deadlineTxtfl.text = dateFormat(date: Date()) // 현재 row값 넣기
+        deadlineTxtfl.text = dateFormat(date: editTask[0].deadlineDate) // 현재 row값 넣기
         deadlineTxtfl.backgroundColor = UIColor(red: 0.85, green: 0.67, blue: 0.46, alpha: 0.2)
         deadlineTxtfl.borderStyle = .none
         deadlineTxtfl.layer.cornerRadius = 15
@@ -95,7 +97,7 @@ class EditTaskModalViewController: UIViewController {
 
         priorityLbl.text = "우선도"
         priorityLbl.font = UIFont.systemFont(ofSize: 12, weight: .bold)
-        priorityLbl.textColor = UIColor(red: 0.85, green: 0.67, blue: 0.46, alpha: 1.00)
+        priorityLbl.textColor = UIColor(red: 0.85, green: 0.67, blue: 0.46, alpha: 0.2)
 
         highPriorityBtn.frame = CGRect(x: 100, y: 100, width: 50, height: 50)
         highPriorityBtn.setTitle("🚴🏻‍\n긴급", for: .normal)
@@ -165,6 +167,29 @@ class EditTaskModalViewController: UIViewController {
             verticalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
         ])
     }
+    
+    private func setInitialPriority() {
+        switch editTask[0].priority {
+        case "High":
+            highPriorityBtn.alpha = 1.0
+            mediumPriorityBtn.alpha = 0.3
+            lowPriorityBtn.alpha = 0.3
+            selectedPriority = "High"
+        case "Medium":
+            highPriorityBtn.alpha = 0.3
+            mediumPriorityBtn.alpha = 1.0
+            lowPriorityBtn.alpha = 0.3
+            selectedPriority = "Medium"
+        case "Low":
+            highPriorityBtn.alpha = 0.3
+            mediumPriorityBtn.alpha = 0.3
+            lowPriorityBtn.alpha = 1.0
+            selectedPriority = "Low"
+        default:
+            break
+        }
+    }
+
 
     // MARK: - Methods & Selectors
 

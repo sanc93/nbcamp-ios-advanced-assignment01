@@ -16,6 +16,7 @@ class TodoListViewController: UIViewController {
     private var complimentMeme: UIImageView!
     private var emptyTasksUILabel: UILabel!
     private var todoList: [Task] = []
+    var editTask: [Task] = []
 
     private let sections: [String] = ["● 긴급", "● 중요", "● 일반"]
 
@@ -226,6 +227,7 @@ class TodoListViewController: UIViewController {
 
     @objc private func showEditTaskModal() {
         let editTaskModalVC = EditTaskModalViewController()
+        editTaskModalVC.editTask = self.editTask
         editTaskModalVC.modalPresentationStyle = .pageSheet
 
         if let presentationController = editTaskModalVC.presentationController as? UISheetPresentationController {
@@ -384,6 +386,22 @@ extension TodoListViewController: UITableViewDataSource {
         // TODO: - 현재 선택한 할일(row값)을 임시 배열에 저장해서.. EditTaskModalViewController로 던져준다
         let edit = UIContextualAction(style: .destructive, title: nil) { (_, _, success) in
 
+            
+            var tasksInSection: [Task]
+            if indexPath.section == 0 {
+                tasksInSection = self.todoList.filter { $0.priority == "High" }
+            } else if indexPath.section == 1 {
+                tasksInSection = self.todoList.filter { $0.priority == "Medium" }
+            } else if indexPath.section == 2 {
+                tasksInSection = self.todoList.filter { $0.priority == "Low" }
+            } else {
+                tasksInSection = []
+            }
+
+//            self.editTask = tasksInSection[indexPath.row]
+            self.editTask.removeAll()
+            self.editTask.append(tasksInSection[indexPath.row])
+            
             self.showEditTaskModal()
             tableView.reloadData()
             success(true)
