@@ -381,6 +381,7 @@ extension TodoListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
+        // TODO: - 현재 선택한 할일(row값)을 임시 배열에 저장해서.. EditTaskModalViewController로 던져준다
         let edit = UIContextualAction(style: .destructive, title: nil) { (_, _, success) in
 
             self.showEditTaskModal()
@@ -407,10 +408,35 @@ extension TodoListViewController: UITableViewDataSource {
             }
 
             let deletedTask = tasksInSection[indexPath.row]
-            self.todoList.removeAll { $0.taskId == deletedTask.taskId }
+//            self.todoList.removeAll { $0.taskId == deletedTask.taskId }
 
-            self.saveDataToUserDefaults()
-            tableView.reloadData()
+            // TODO: - taskId를 기준으로 찾아서 core data에서 삭제
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let persistentContainer = appDelegate.persistentContainer.viewContext
+            
+            // NSFetchRequest 생성
+            let fetchRequest: NSFetchRequest<TaskModel> = TaskModel.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "taskId == %@", deletedTask.taskId.uuidString)
+
+            do {
+                // Core Data에서 객체를 가져와서 업데이트
+                let results = try persistentContainer.fetch(fetchRequest)
+                
+                if let managedObject = results.first {
+                    
+                    // 찾아서 삭제
+                    persistentContainer.delete(managedObject)
+                    
+                    // 변경사항을 저장
+                    try persistentContainer.save()
+                }
+            } catch {
+                print("Core Data fetch error: \(error.localizedDescription)")
+            }
+//            self.saveDataToUserDefaults()
+            self.loadDataFromCoreData()
+            self.todoListTable.reloadData()
             success(true)
 
         }
