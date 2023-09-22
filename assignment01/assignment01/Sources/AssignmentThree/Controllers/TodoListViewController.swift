@@ -300,17 +300,48 @@ extension TodoListViewController: UITableViewDelegate {
         } else {
             tasksInSection = []
         }
-
+        
         let selectedTask = tasksInSection[indexPath.row]
+        
+//        if let index = todoList.firstIndex(where: { $0.taskId == selectedTask.taskId }) {
+//            todoList[index].isCompleted.toggle()
+//            if todoList[index].isCompleted {
+//                todoList[index].completedDate = Date()
+//                showComplimentMeme()
+//            }
+//            saveDataToUserDefaults()
+//            tableView.reloadData()
+//        }
+        
+        // TODO: - core data에서 taskId를 기준으로 찾아서 completedDate와 isCompleted 변경 해주기
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let persistentContainer = appDelegate.persistentContainer.viewContext
+        
+        // NSFetchRequest 생성
+        let fetchRequest: NSFetchRequest<TaskModel> = TaskModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "taskId == %@", selectedTask.taskId.uuidString)
 
-        if let index = todoList.firstIndex(where: { $0.taskId == selectedTask.taskId }) {
-            todoList[index].isCompleted.toggle()
-            if todoList[index].isCompleted {
-                todoList[index].completedDate = Date()
-                showComplimentMeme()
+        do {
+            // Core Data에서 객체를 가져와서 업데이트
+            let results = try persistentContainer.fetch(fetchRequest)
+            
+            if let managedObject = results.first {
+                managedObject.isCompleted.toggle()
+                
+                if managedObject.isCompleted {
+                    managedObject.completedDate = Date()
+                    showComplimentMeme()
+                }
+                
+                // 변경사항을 저장
+                try persistentContainer.save()
+
+                loadDataFromCoreData()
+                todoListTable.reloadData()
             }
-            saveDataToUserDefaults()
-            tableView.reloadData()
+        } catch {
+            print("Core Data fetch error: \(error.localizedDescription)")
         }
     }
 }
